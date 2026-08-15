@@ -12,6 +12,8 @@ public class Game {
     private int currentPlayerIndex;
 
     public Game(Board board, Dice dice, List<Player> players) {
+        if (board == null || dice == null || players == null || players.isEmpty())
+            throw new IllegalArgumentException("Board, dice and at least one player required");
         this.board = board;
         this.dice = dice;
         this.players = new ArrayList<>(players);
@@ -25,11 +27,11 @@ public class Game {
         }
 
         Player currentPlayer = players.get(currentPlayerIndex);
-        int newPosition = currentPlayer.getPosition() + dice.roll();
         int roll = dice.roll();
+        int newPosition = currentPlayer.getPosition() + roll;
         System.out.println(currentPlayer.getName() + " rolled " + roll);
 
-        if(newPosition >= board.getSize()) {
+        if(newPosition > board.getSize()) {
             System.out.println(currentPlayer.getName() + " overshoots — stays at " + currentPlayer.getPosition());
         } else {
             int destination = board.getDestination(newPosition);
