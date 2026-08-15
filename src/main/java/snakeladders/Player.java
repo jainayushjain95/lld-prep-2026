@@ -24,6 +24,6 @@ public class Player {
         this.position = position;
     }
 
-    public boolean hasWon(int position) {
+    public boolean hasWon() {
         return position == Constants.SIZE;
     }}
