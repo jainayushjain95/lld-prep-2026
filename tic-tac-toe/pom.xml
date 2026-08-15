@@ -12,6 +12,19 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>snake-and-ladders</artifactId>
+    <artifactId>tic-tac-toe</artifactId>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <mainClass>tictactoe.Main</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

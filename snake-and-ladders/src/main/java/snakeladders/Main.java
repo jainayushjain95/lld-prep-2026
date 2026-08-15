@@ -7,26 +7,16 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         Map<Integer, Integer> snakes = new HashMap<>();
-        snakes.put(17, 7);
-        snakes.put(32, 14);
-        snakes.put(47, 26);
-        snakes.put(58, 39);
-        snakes.put(64, 44);
-        snakes.put(74, 53);
-        snakes.put(83, 61);
-        snakes.put(93, 48);
-        snakes.put(99, 65);
+        snakes.put(99, 7);
+        snakes.put(70, 35);
+        snakes.put(52, 21);
+        snakes.put(25, 3);
 
         Map<Integer, Integer> ladders = new HashMap<>();
-        ladders.put(4, 25);
-        ladders.put(9, 31);
-        ladders.put(20, 42);
-        ladders.put(28, 55);
-        ladders.put(36, 57);
-        ladders.put(51, 72);
-        ladders.put(62, 80);
-        ladders.put(71, 91);
-        ladders.put(79, 98);
+        ladders.put(4, 56);
+        ladders.put(13, 46);
+        ladders.put(33, 49);
+        ladders.put(42, 63);
 
         Board board = new Board(snakes, ladders);
         Dice dice   = new Dice();
@@ -38,6 +28,8 @@ public class Main {
 
         Game game = new Game(board, dice, players);
 
-        snakeladders.ui.GameApp.launch(board, snakes, ladders, players, game);
+        while (!game.isGameOver()) {
+            game.takeTurn();
+        }
     }
 }

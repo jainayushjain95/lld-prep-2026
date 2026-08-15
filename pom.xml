@@ -18,6 +18,7 @@
 
     <modules>
         <module>snake-and-ladders</module>
+        <module>tic-tac-toe</module>
     </modules>
 
 </project>
