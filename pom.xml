@@ -19,6 +19,7 @@
     <modules>
         <module>snake-and-ladders</module>
         <module>tic-tac-toe</module>
+        <module>design-patterns</module>
     </modules>
 
 </project>

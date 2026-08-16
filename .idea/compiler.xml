@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="snake-and-ladders" />
         <module name="tic-tac-toe" />
+        <module name="design-patterns" />
       </profile>
     </annotationProcessing>
   </component>
