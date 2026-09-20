@@ -1,21 +1,22 @@
 package musicplaylistmixer.services.search;
 
 import musicplaylistmixer.Song;
+import musicplaylistmixer.utilities.CommonUtility;
 
 public class GenreCriteria implements SearchCriteria {
 
     private final String genre;
 
     public GenreCriteria(String genre) {
-        if(genre == null || genre.isBlank()) {
+        if(CommonUtility.isBlank(genre)) {
             throw new IllegalArgumentException("Search term genre cant be null");
         }
-        this.genre = genre.toLowerCase();
+        this.genre = genre;
     }
 
     @Override
     public boolean matches(Song song) {
-        return song.getGenre().toLowerCase().contains(genre);
+        return !CommonUtility.isBlank(song.getGenre()) && song.getGenre().toLowerCase().equalsIgnoreCase(genre);
     }
 
 }

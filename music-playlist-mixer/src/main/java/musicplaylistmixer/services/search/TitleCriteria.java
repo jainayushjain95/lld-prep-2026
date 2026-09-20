@@ -1,13 +1,14 @@
 package musicplaylistmixer.services.search;
 
 import musicplaylistmixer.Song;
+import musicplaylistmixer.utilities.CommonUtility;
 
 public class TitleCriteria implements SearchCriteria{
 
     private final String title;
 
     public TitleCriteria(String title) {
-        if(title == null || title.isBlank()) {
+        if(CommonUtility.isBlank(title)) {
             throw new IllegalArgumentException("Search term title cant be null");
         }
         this.title = title.toLowerCase();

@@ -1,5 +1,7 @@
 package musicplaylistmixer;
 
+import musicplaylistmixer.utilities.CommonUtility;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -11,7 +13,7 @@ public class Playlist {
 
 
     public Playlist(String name) {
-        if(name == null || name.isBlank()) {
+        if(CommonUtility.isBlank(name)) {
             throw new IllegalArgumentException("name cant be empty");
         }
         this.playlistEntries = new ArrayList<>();
@@ -80,7 +82,7 @@ public class Playlist {
     }
 
     public void rename(String name) {
-        if(name == null || name.isBlank()) {
+        if(CommonUtility.isBlank(name)) {
             throw new IllegalArgumentException("name cant be empty");
         }
         this.name = name;

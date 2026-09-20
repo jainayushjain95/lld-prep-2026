@@ -1,5 +1,7 @@
 package musicplaylistmixer;
 
+import musicplaylistmixer.utilities.CommonUtility;
+
 import java.util.Objects;
 
 public final class Song {
@@ -94,10 +96,10 @@ public final class Song {
         private String language;
 
         public Builder(String id, String title, String artist, int durationSecs) {
-            if(id == null || id.isBlank() || title == null || title.isBlank()) {
+            if(CommonUtility.isBlank(id) || CommonUtility.isBlank(title)) {
                 throw new IllegalArgumentException("Title and Id must not be empty");
             }
-            if(artist == null || artist.isBlank()) {
+            if(CommonUtility.isBlank(artist)) {
                 throw new IllegalArgumentException("artist must not be empty");
             }
             if(durationSecs <= 0) {
