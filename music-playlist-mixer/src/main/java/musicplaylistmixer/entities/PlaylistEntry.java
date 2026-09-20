@@ -33,4 +33,8 @@ public class PlaylistEntry {
     public LocalDateTime getAddedAt() {
         return addedAt;
     }
+
+    public User getAddedBy() {
+        return addedBy;
+    }
 }

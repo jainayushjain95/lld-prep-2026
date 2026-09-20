@@ -3,8 +3,10 @@ package musicplaylistmixer;
 import musicplaylistmixer.entities.Library;
 import musicplaylistmixer.entities.MusicPlayer;
 import musicplaylistmixer.entities.Playlist;
+import musicplaylistmixer.entities.PlaylistEntry;
 import musicplaylistmixer.entities.Song;
 import musicplaylistmixer.entities.User;
+import musicplaylistmixer.observers.ConsoleNotifier;
 import musicplaylistmixer.services.play.PlayRepeatAllStrategy;
 import musicplaylistmixer.services.play.PlayRepeatOneStrategy;
 import musicplaylistmixer.services.play.PlaySequentialStrategy;
@@ -67,11 +69,11 @@ public class Main {
         User ayush = new User("u1", "Ayush");
 
         Playlist gym = ayush.createPlaylist("Gym");
-        gym.addSong(kesariya);
-        gym.addSong(tumHiHo);
-        gym.addSong(malang);
-        gym.addSong(kesariyaLive);
-        gym.addSong(apnaBanaLe);
+        gym.addSong(kesariya, ayush);
+        gym.addSong(tumHiHo, ayush);
+        gym.addSong(malang, ayush);
+        gym.addSong(kesariyaLive, ayush);
+        gym.addSong(apnaBanaLe, ayush);
 
         System.out.println("=== 1. SEQUENTIAL to exhaustion ===");
         MusicPlayer sequentialPlayer = new MusicPlayer(gym, new PlaySequentialStrategy());
@@ -163,9 +165,9 @@ public class Main {
         System.out.println("=== 15. MIX two playlists ===");
 
         Playlist lateNight = ayush.createPlaylist("Late Night");
-        lateNight.addSong(tumHiHo);
-        lateNight.addSong(kesariyaLive);
-        lateNight.addSong(apnaBanaLe);
+        lateNight.addSong(tumHiHo, ayush);
+        lateNight.addSong(kesariyaLive, ayush);
+        lateNight.addSong(apnaBanaLe, ayush);
 
         System.out.println("Gym before:");
         printSongs(gym.getSongs());
@@ -185,6 +187,33 @@ public class Main {
         System.out.println("User's playlists (expect Gym, Late Night, Road Trip):");
         for (Playlist playlist : ayush.getPlaylists()) {
             System.out.println(playlist.getName());
+        }
+
+        System.out.println();
+        System.out.println("=== 16. COLLABORATIVE playlist ===");
+
+        User priya = new User("u2", "Priya");
+
+        Playlist wedding = ayush.createPlaylist("Wedding");
+        wedding.addObserver(new ConsoleNotifier());
+        wedding.addCollaborator(priya);
+
+        wedding.addSong(kesariya, ayush);
+        wedding.addSong(tumHiHo, priya);
+
+        System.out.println("Entries with who added them:");
+
+        for (PlaylistEntry entry : wedding.getPlaylistEntries()) {
+            System.out.println(entry.getSong().getTitle() + " added by " + entry.getAddedBy().getName());
+        }
+
+        User outsider = new User("u3", "Rahul");
+
+        try {
+            wedding.addSong(malang, outsider);
+            System.out.println("PROBLEM: outsider was allowed to add");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Correctly rejected: " + e.getMessage());
         }
     }
 

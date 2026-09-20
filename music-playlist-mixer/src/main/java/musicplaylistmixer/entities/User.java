@@ -72,10 +72,10 @@ public class User {
         }
         Playlist mixed = createPlaylist(nameOfMixedPlaylist);
         for(PlaylistEntry playlistEntry : first.getPlaylistEntries()) {
-            mixed.addSongIfAbsent(playlistEntry.getSong());
+            mixed.addSongIfAbsent(playlistEntry.getSong(), this);
         }
         for(PlaylistEntry playlistEntry : second.getPlaylistEntries()) {
-            mixed.addSongIfAbsent(playlistEntry.getSong());
+            mixed.addSongIfAbsent(playlistEntry.getSong(), this);
         }
         return mixed;
     }
