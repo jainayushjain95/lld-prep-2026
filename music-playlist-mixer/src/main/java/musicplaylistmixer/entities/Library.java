@@ -1,8 +1,5 @@
 package musicplaylistmixer.entities;
 
-import musicplaylistmixer.services.sort.SortService;
-import musicplaylistmixer.utilities.CommonUtility;
-
 import java.util.*;
 
 public class Library {
