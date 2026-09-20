@@ -1,9 +1,9 @@
 package musicplaylistmixer;
 
-import musicplaylistmixer.services.search.PlayRepeatAllStrategy;
-import musicplaylistmixer.services.search.PlayRepeatOneStrategy;
-import musicplaylistmixer.services.search.PlaySequentialStrategy;
-import musicplaylistmixer.services.search.PlayShuffleStrategy;
+import musicplaylistmixer.services.play.PlayRepeatAllStrategy;
+import musicplaylistmixer.services.play.PlayRepeatOneStrategy;
+import musicplaylistmixer.services.play.PlaySequentialStrategy;
+import musicplaylistmixer.services.play.PlayShuffleStrategy;
 
 import java.util.Random;
 

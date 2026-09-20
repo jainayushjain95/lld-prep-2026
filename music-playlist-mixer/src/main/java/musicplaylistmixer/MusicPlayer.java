@@ -1,6 +1,6 @@
 package musicplaylistmixer;
 
-import musicplaylistmixer.services.search.PlayStrategy;
+import musicplaylistmixer.services.play.PlayStrategy;
 
 import java.util.List;
 

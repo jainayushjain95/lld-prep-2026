@@ -1,4 +1,4 @@
-package musicplaylistmixer.services.search;
+package musicplaylistmixer.services.play;
 
 import musicplaylistmixer.Song;
 
