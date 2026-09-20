@@ -2,6 +2,7 @@ package musicplaylistmixer.services.search;
 
 import musicplaylistmixer.Song;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AnyOfCriteria implements SearchCriteria {
@@ -12,7 +13,7 @@ public class AnyOfCriteria implements SearchCriteria {
         if(searchCriteria == null || searchCriteria.isEmpty()) {
             throw new IllegalArgumentException("Search Criteria must have some criteria");
         }
-        this.searchCriteria = searchCriteria;
+        this.searchCriteria = new ArrayList<>(searchCriteria);
     }
 
     @Override

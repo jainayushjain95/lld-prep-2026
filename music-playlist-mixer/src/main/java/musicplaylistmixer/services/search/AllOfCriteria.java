@@ -3,6 +3,7 @@ package musicplaylistmixer.services.search;
 import musicplaylistmixer.Song;
 import musicplaylistmixer.utilities.CommonUtility;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AllOfCriteria implements SearchCriteria {
@@ -13,13 +14,13 @@ public class AllOfCriteria implements SearchCriteria {
         if(searchCriteria == null || searchCriteria.isEmpty()) {
             throw new IllegalArgumentException("Search Criteria must have some criteria");
         }
-        this.searchCriteria = searchCriteria;
+        this.searchCriteria = new ArrayList<>(searchCriteria);
     }
 
     @Override
     public boolean matches(Song song) {
-        for(SearchCriteria searchCriteria1 : searchCriteria) {
-            if(!searchCriteria1.matches(song)) {
+        for(SearchCriteria criteria : searchCriteria) {
+            if(!criteria.matches(song)) {
                 return false;
             }
         }
