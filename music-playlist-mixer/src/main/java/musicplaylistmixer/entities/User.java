@@ -9,6 +9,18 @@ public class User {
     private final List<Playlist> playlists;
     private final String userId;
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(name, user.name) && Objects.equals(userId, user.userId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, userId);
+    }
+
     public User(String userId, String name) {
         if(CommonUtility.isBlank(userId) || CommonUtility.isBlank(name)) {
             throw new IllegalArgumentException("Name and userid cant be empty");

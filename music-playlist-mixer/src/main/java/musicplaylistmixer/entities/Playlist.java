@@ -9,19 +9,31 @@ public class Playlist {
     private String name;
     private final List<PlaylistEntry> playlistEntries;
     private final User owner;
+    private final Set<User> collaborators;
 
     public Playlist(String name, User owner) {
         if(owner == null) {
             throw new IllegalArgumentException("Playlist cant exist without owner");
         }
-        this.owner = owner;
         if(CommonUtility.isBlank(name)) {
             throw new IllegalArgumentException("name cant be empty");
         }
+        this.collaborators = new HashSet<>();
+        this.owner = owner;
         this.playlistEntries = new ArrayList<>();
         this.name = name;
     }
 
+    public List<User> getCollaborators() {
+        return new ArrayList<>(collaborators);
+    }
+
+    public boolean addCollaborators(User user) {
+        if(user == null) {
+            throw new IllegalArgumentException("User cant be null");
+        }
+        return collaborators.add(user);
+    }
 
     public void addSong(Song song) {
         if(song == null) {
