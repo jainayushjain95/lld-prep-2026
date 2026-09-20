@@ -32,8 +32,7 @@ public class User {
 
     public boolean removePlaylist(Playlist playlist) {
         if(playlist != null) {
-            playlists.remove(playlist);
-            return true;
+            return playlists.remove(playlist);
         }
         return false;
     }
@@ -52,7 +51,10 @@ public class User {
     }
 
     public Playlist mix(Playlist first, Playlist second, String nameOfMixedPlaylist) {
-        Playlist mixed = new Playlist(nameOfMixedPlaylist, this);
+        if(first == null || second == null) {
+            throw new IllegalArgumentException("Any playlist cant be empty");
+        }
+        Playlist mixed = createPlaylist(nameOfMixedPlaylist);
         for(PlaylistEntry playlistEntry : first.getPlaylistEntries()) {
             mixed.addSongIfAbsent(playlistEntry.getSong());
         }
