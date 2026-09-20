@@ -6,6 +6,12 @@ public class PlaySequentialStrategy implements PlayStrategy {
 
     @Override
     public int next(int currentIndex, List<Song> songs) {
-        return 0;
+        if(songs.isEmpty()) {
+            return -1;
+        }
+        if(currentIndex >= songs.size()) {
+            currentIndex = 0;
+        }
+        return currentIndex;
     }
 }
