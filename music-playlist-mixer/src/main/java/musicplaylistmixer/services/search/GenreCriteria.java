@@ -16,7 +16,7 @@ public class GenreCriteria implements SearchCriteria {
 
     @Override
     public boolean matches(Song song) {
-        return !CommonUtility.isBlank(song.getGenre()) && song.getGenre().toLowerCase().equalsIgnoreCase(genre);
+        return !CommonUtility.isBlank(song.getGenre()) && song.getGenre().equalsIgnoreCase(genre);
     }
 
 }
