@@ -6,3 +6,4 @@ Tracks how many times each LLD problem has been practiced from scratch.
 |--------------------|----------------|
 | Snake and Ladders  | 0              |
 | Tic Tac Toe        | 1              |
+| Music Playlist Mixer | 0            |
