@@ -6,6 +6,9 @@ public class PlayRepeatAllStrategy implements PlayStrategy {
 
     @Override
     public int next(int currentIndex, List<Song> songs) {
-        return 0;
+        if (songs.isEmpty()) {
+            return -1;
+        }
+        return (currentIndex + 1) % songs.size();
     }
 }

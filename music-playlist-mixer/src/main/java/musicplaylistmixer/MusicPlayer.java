@@ -10,7 +10,7 @@ public class MusicPlayer {
 
     public MusicPlayer(Playlist playlist, PlayStrategy playStrategy) {
         this.playlist = playlist;
-        this.currentIndex = 0;
+        this.currentIndex = -1;
         this.playStrategy = playStrategy;
     }
 
