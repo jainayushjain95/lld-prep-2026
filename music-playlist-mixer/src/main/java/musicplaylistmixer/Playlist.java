@@ -1,11 +1,9 @@
 package musicplaylistmixer;
 
+import musicplaylistmixer.services.sort.SortService;
 import musicplaylistmixer.utilities.CommonUtility;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class Playlist {
     private String name;
@@ -95,5 +93,9 @@ public class Playlist {
             }
         }
         return false;
+    }
+
+    public List<Song> sortedBy(Comparator<Song> comparator) {
+        return SortService.sort(this.getSongs(), comparator);
     }
 }

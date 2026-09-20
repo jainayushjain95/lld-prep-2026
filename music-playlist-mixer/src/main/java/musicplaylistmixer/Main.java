@@ -11,8 +11,13 @@ import musicplaylistmixer.services.search.GenreCriteria;
 import musicplaylistmixer.services.search.SearchCriteria;
 import musicplaylistmixer.services.search.SearchService;
 import musicplaylistmixer.services.search.TitleCriteria;
+import musicplaylistmixer.services.sort.ArtistComparator;
+import musicplaylistmixer.services.sort.ChainedComparator;
+import musicplaylistmixer.services.sort.DurationComparator;
+import musicplaylistmixer.services.sort.TitleComparator;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
@@ -116,6 +121,25 @@ public class Main {
         nested.add(new ArtistCriteria("Arijit"));
         nested.add(new AnyOfCriteria(genreOptions));
         printSongs(SearchService.search(gym.getSongs(), new AllOfCriteria(nested)));
+
+        System.out.println();
+        System.out.println("=== 10. SORT by title ===");
+        printSongs(gym.sortedBy(new TitleComparator()));
+
+        System.out.println();
+        System.out.println("=== 11. SORT by duration ===");
+        printSongs(gym.sortedBy(new DurationComparator()));
+
+        System.out.println();
+        System.out.println("=== 12. SORT by artist, then title ===");
+        List<Comparator<Song>> levels = new ArrayList<>();
+        levels.add(new ArtistComparator());
+        levels.add(new TitleComparator());
+        printSongs(gym.sortedBy(new ChainedComparator(levels)));
+
+        System.out.println();
+        System.out.println("=== 13. Stored order is UNCHANGED ===");
+        printSongs(gym.getSongs());
     }
 
 
