@@ -94,6 +94,12 @@ public final class Song {
         private String language;
 
         public Builder(String id, String title, String artist, int durationSecs) {
+            if(id == null || id.isBlank() || title == null || title.isBlank()) {
+                throw new IllegalArgumentException("Title and Id must not be empty");
+            }
+            if(durationSecs <= 0) {
+                throw new IllegalArgumentException("duration cant be less than 1 second");
+            }
             this.id = id;
             this.title = title;
             this.artist = artist;

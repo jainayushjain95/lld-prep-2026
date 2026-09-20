@@ -18,8 +18,14 @@ public class Playlist {
         songs.add(song);
     }
 
-    public void removeSong(Song song) {
-        songs.remove(song);
+    public void addSongIfAbsent(Song song) {
+        if(!songs.contains(song)) {
+            addSong(song);
+        }
+    }
+
+    public boolean removeSong(Song song) {
+        return songs.remove(song);
     }
 
     public List<Song> getSongs() {
@@ -30,7 +36,10 @@ public class Playlist {
         return name;
     }
 
-    public void setName(String name) {
+    public void rename(String name) {
+        if(name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("name cant be empty");
+        }
         this.name = name;
     }
 }
