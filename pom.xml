@@ -21,6 +21,7 @@
         <module>tic-tac-toe</module>
         <module>design-patterns</module>
         <module>practice-one</module>
+        <module>music-playlist-mixer</module>
     </modules>
 
 </project>

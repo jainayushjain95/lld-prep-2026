@@ -9,6 +9,7 @@
         <module name="snake-and-ladders" />
         <module name="tic-tac-toe" />
         <module name="practice-one" />
+        <module name="music-playlist-mixer" />
         <module name="design-patterns" />
       </profile>
     </annotationProcessing>
