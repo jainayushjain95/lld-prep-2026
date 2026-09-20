@@ -8,6 +8,6 @@ public class TitleComparator implements Comparator<Song> {
 
     @Override
     public int compare(Song first, Song second) {
-        return first.getTitle().compareTo(second.getTitle());
+        return first.getTitle().compareToIgnoreCase(second.getTitle());
     }
 }

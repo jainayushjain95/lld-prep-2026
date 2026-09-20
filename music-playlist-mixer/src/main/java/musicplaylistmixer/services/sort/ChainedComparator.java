@@ -2,6 +2,7 @@ package musicplaylistmixer.services.sort;
 
 import musicplaylistmixer.Song;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class ChainedComparator implements Comparator<Song> {
         if(comparators == null || comparators.isEmpty()) {
             throw new IllegalArgumentException("Need at least one sorting criteria");
         }
-        this.comparators = comparators;
+        this.comparators = new ArrayList<>(comparators);
     }
 
     @Override

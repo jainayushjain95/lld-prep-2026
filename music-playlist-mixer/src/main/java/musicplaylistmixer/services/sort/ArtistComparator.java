@@ -8,6 +8,6 @@ public class ArtistComparator implements Comparator<Song> {
 
     @Override
     public int compare(Song first, Song second) {
-        return first.getArtist().compareTo(second.getArtist());
+        return first.getArtist().compareToIgnoreCase(second.getArtist());
     }
 }
