@@ -5,7 +5,6 @@ import java.util.List;
 public class MusicPlayer {
     private final Playlist playlist;
     private int currentIndex;
-    private String mode;
     private PlayStrategy playStrategy;
 
     public MusicPlayer(Playlist playlist, PlayStrategy playStrategy) {
@@ -14,8 +13,8 @@ public class MusicPlayer {
         this.playStrategy = playStrategy;
     }
 
-    public void setMode(String mode) {
-        this.mode = mode;
+    public void setPlayStrategy(PlayStrategy playStrategy) {
+        this.playStrategy = playStrategy;
     }
 
     public Song next() {
