@@ -2,8 +2,7 @@ package musicplaylistmixer.entities;
 
 import musicplaylistmixer.utilities.CommonUtility;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class User {
     private String name;
@@ -31,10 +30,12 @@ public class User {
         return playlist;
     }
 
-    public void removePlaylist(Playlist playlist) {
+    public boolean removePlaylist(Playlist playlist) {
         if(playlist != null) {
             playlists.remove(playlist);
+            return true;
         }
+        return false;
     }
 
     private boolean isNameAvailable(String name) {
@@ -44,5 +45,20 @@ public class User {
             }
         }
         return true;
+    }
+
+    public List<Playlist> getPlaylists() {
+        return Collections.unmodifiableList(playlists);
+    }
+
+    public Playlist mix(Playlist first, Playlist second, String nameOfMixedPlaylist) {
+        Playlist mixed = new Playlist(nameOfMixedPlaylist, this);
+        for(PlaylistEntry playlistEntry : first.getPlaylistEntries()) {
+            mixed.addSongIfAbsent(playlistEntry.getSong());
+        }
+        for(PlaylistEntry playlistEntry : second.getPlaylistEntries()) {
+            mixed.addSongIfAbsent(playlistEntry.getSong());
+        }
+        return mixed;
     }
 }
