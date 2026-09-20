@@ -20,6 +20,9 @@ public class User {
     }
 
     public Playlist createPlaylist(String name) {
+        if(name == null) {
+            throw new IllegalArgumentException("Name cant be empty");
+        }
         if(!isNameAvailable(name)) {
             throw new IllegalArgumentException("Name already taken");
         }
@@ -29,18 +32,14 @@ public class User {
     }
 
     public void removePlaylist(Playlist playlist) {
-        if(playlist == null) {
-            throw new IllegalArgumentException("Playlists cant be null");
+        if(playlist != null) {
+            playlists.remove(playlist);
         }
-        if(isNameAvailable(playlist.getName())) {
-            throw new IllegalArgumentException("No playlists exists with this name");
-        }
-        playlists.remove(playlist);
     }
 
     private boolean isNameAvailable(String name) {
         for(Playlist playlist : playlists) {
-            if(playlist.getName().equals(name)) {
+            if(playlist.getName().equalsIgnoreCase(name)) {
                 return false;
             }
         }
