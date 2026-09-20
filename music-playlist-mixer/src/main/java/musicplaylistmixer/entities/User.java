@@ -20,7 +20,7 @@ public class User {
     }
 
     public Playlist createPlaylist(String name) {
-        if(isNameAvailable(name)) {
+        if(!isNameAvailable(name)) {
             throw new IllegalArgumentException("Name already taken");
         }
         Playlist playlist = new Playlist(name, this);
@@ -32,7 +32,7 @@ public class User {
         if(playlist == null) {
             throw new IllegalArgumentException("Playlists cant be null");
         }
-        if(!isNameAvailable(name)) {
+        if(isNameAvailable(playlist.getName())) {
             throw new IllegalArgumentException("No playlists exists with this name");
         }
         playlists.remove(playlist);
