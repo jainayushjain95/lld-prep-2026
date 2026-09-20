@@ -20,6 +20,9 @@ public class Playlist {
 
 
     public void addSong(Song song) {
+        if(song == null) {
+            throw new IllegalArgumentException("Non existent Song cant be added");
+        }
         addSong(song, null);
     }
 
