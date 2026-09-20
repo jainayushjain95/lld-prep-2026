@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class PlayStrategyFactory {
     public static PlayStrategy create(Mode mode, Random random) {
-        if(mode.equals(Mode.Sequential)) {
+        if(mode.equals(Mode.SEQUENTIAL)) {
             return new PlaySequentialStrategy();
         }
         if(mode.equals(Mode.SHUFFLE)) {
@@ -18,6 +18,6 @@ public class PlayStrategyFactory {
         if(mode.equals(Mode.REPEAT_ALL)) {
             return new PlayRepeatAllStrategy();
         }
-        return null;
+        throw new IllegalArgumentException("Invalid mode");
     }
 }

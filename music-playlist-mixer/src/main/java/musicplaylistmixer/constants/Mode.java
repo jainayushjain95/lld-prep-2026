@@ -1,5 +1,5 @@
 package musicplaylistmixer.constants;
 
 public enum Mode {
-    Sequential, REPEAT_ONE, REPEAT_ALL, SHUFFLE
+    SEQUENTIAL, REPEAT_ONE, REPEAT_ALL, SHUFFLE
 }
