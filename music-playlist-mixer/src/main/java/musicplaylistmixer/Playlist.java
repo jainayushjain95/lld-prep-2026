@@ -10,6 +10,9 @@ public class Playlist {
 
 
     public Playlist(String name) {
+        if(name == null || name.isBlank()) {
+            throw new IllegalArgumentException("name cant be empty");
+        }
         this.songs = new ArrayList<>();
         this.name = name;
     }
@@ -18,10 +21,12 @@ public class Playlist {
         songs.add(song);
     }
 
-    public void addSongIfAbsent(Song song) {
+    public boolean addSongIfAbsent(Song song) {
         if(!songs.contains(song)) {
             addSong(song);
+            return true;
         }
+        return false;
     }
 
     public boolean removeSong(Song song) {
@@ -37,7 +42,7 @@ public class Playlist {
     }
 
     public void rename(String name) {
-        if(name == null || name.isEmpty()) {
+        if(name == null || name.isBlank()) {
             throw new IllegalArgumentException("name cant be empty");
         }
         this.name = name;
