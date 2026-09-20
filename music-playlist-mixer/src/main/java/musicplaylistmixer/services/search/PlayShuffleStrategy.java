@@ -1,4 +1,6 @@
-package musicplaylistmixer;
+package musicplaylistmixer.services.search;
+
+import musicplaylistmixer.Song;
 
 import java.util.ArrayList;
 import java.util.Collections;

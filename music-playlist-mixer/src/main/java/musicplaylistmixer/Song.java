@@ -97,6 +97,9 @@ public final class Song {
             if(id == null || id.isBlank() || title == null || title.isBlank()) {
                 throw new IllegalArgumentException("Title and Id must not be empty");
             }
+            if(artist == null || artist.isBlank()) {
+                throw new IllegalArgumentException("artist must not be empty");
+            }
             if(durationSecs <= 0) {
                 throw new IllegalArgumentException("duration cant be less than 1 second");
             }

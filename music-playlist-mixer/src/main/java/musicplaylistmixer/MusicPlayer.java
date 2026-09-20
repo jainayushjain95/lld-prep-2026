@@ -1,5 +1,7 @@
 package musicplaylistmixer;
 
+import musicplaylistmixer.services.search.PlayStrategy;
+
 import java.util.List;
 
 public class MusicPlayer {

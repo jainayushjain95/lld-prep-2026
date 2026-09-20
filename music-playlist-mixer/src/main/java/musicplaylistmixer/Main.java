@@ -1,5 +1,10 @@
 package musicplaylistmixer;
 
+import musicplaylistmixer.services.search.PlayRepeatAllStrategy;
+import musicplaylistmixer.services.search.PlayRepeatOneStrategy;
+import musicplaylistmixer.services.search.PlaySequentialStrategy;
+import musicplaylistmixer.services.search.PlayShuffleStrategy;
+
 import java.util.Random;
 
 public class Main {
