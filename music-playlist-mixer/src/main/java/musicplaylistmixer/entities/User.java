@@ -13,12 +13,12 @@ public class User {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(name, user.name) && Objects.equals(userId, user.userId);
+        return Objects.equals(userId, user.userId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, userId);
+        return Objects.hashCode(userId);
     }
 
     public User(String userId, String name) {
@@ -28,6 +28,10 @@ public class User {
         this.name = name;
         this.playlists = new ArrayList<>();
         this.userId = userId;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Playlist createPlaylist(String name) {

@@ -1,5 +1,6 @@
 package musicplaylistmixer.entities;
 
+import musicplaylistmixer.observers.PlaylistObserver;
 import musicplaylistmixer.services.sort.SortService;
 import musicplaylistmixer.utilities.CommonUtility;
 
@@ -10,6 +11,7 @@ public class Playlist {
     private final List<PlaylistEntry> playlistEntries;
     private final User owner;
     private final Set<User> collaborators;
+    private final List<PlaylistObserver> observers;
 
     public Playlist(String name, User owner) {
         if(owner == null) {
@@ -18,10 +20,23 @@ public class Playlist {
         if(CommonUtility.isBlank(name)) {
             throw new IllegalArgumentException("name cant be empty");
         }
+        this.observers = new ArrayList<>();
         this.collaborators = new HashSet<>();
         this.owner = owner;
         this.playlistEntries = new ArrayList<>();
         this.name = name;
+    }
+
+    public void addObserver(PlaylistObserver observer) {
+        if(observer == null) {
+            throw new IllegalArgumentException("Observer cant be null");
+        }
+        observers.add(observer);
+    }
+
+
+    public boolean removeObserver(PlaylistObserver observer) {
+        return observers.remove(observer);
     }
 
     public List<User> getCollaborators() {
