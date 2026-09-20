@@ -1,4 +1,4 @@
-package musicplaylistmixer;
+package musicplaylistmixer.entities;
 
 import musicplaylistmixer.services.sort.SortService;
 import musicplaylistmixer.utilities.CommonUtility;
@@ -8,9 +8,13 @@ import java.util.*;
 public class Playlist {
     private String name;
     private final List<PlaylistEntry> playlistEntries;
+    private final User owner;
 
-
-    public Playlist(String name) {
+    public Playlist(String name, User owner) {
+        if(owner == null) {
+            throw new IllegalArgumentException("Playlist cant exist without owner");
+        }
+        this.owner = owner;
         if(CommonUtility.isBlank(name)) {
             throw new IllegalArgumentException("name cant be empty");
         }

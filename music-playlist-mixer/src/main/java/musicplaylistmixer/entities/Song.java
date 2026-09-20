@@ -1,4 +1,4 @@
-package musicplaylistmixer;
+package musicplaylistmixer.entities;
 
 import musicplaylistmixer.utilities.CommonUtility;
 

@@ -1,6 +1,6 @@
 package musicplaylistmixer.services.search;
 
-import musicplaylistmixer.Song;
+import musicplaylistmixer.entities.Song;
 import musicplaylistmixer.utilities.CommonUtility;
 
 public class ArtistCriteria implements SearchCriteria {

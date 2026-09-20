@@ -1,4 +1,4 @@
-package musicplaylistmixer;
+package musicplaylistmixer.entities;
 import java.time.LocalDateTime;
 
 public class PlaylistEntry {

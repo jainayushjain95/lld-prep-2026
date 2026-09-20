@@ -1,6 +1,6 @@
 package musicplaylistmixer.services.play;
 
-import musicplaylistmixer.Song;
+import musicplaylistmixer.entities.Song;
 
 import java.util.ArrayList;
 import java.util.Collections;
